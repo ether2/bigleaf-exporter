@@ -16,10 +16,11 @@ site_information_info
 # clone and build
 ```
 git clone https://github.com/ether2/bigleaf-exporter
+docker build -t bigleaf-exporter .
 ```
 ## docker
 ```
-docker build -t bigleaf-exporter .
+docker run -d -p 8000:8000 bigleaf-exporter
 ```
 ## docker compose
 ```
