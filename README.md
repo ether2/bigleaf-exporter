@@ -1,7 +1,7 @@
 # bigleaf-exporter
 Prometheus exporter for Bigleaf® Networks status api
 
-NOTE: This is not an official Bigleaf product. It is simply a personal/independent project to leverage Prometheus for purposes of observability and visualization on a Grafana dashboard.
+NOTE: This is not an official Bigleaf product. It is simply a personal/independent project to leverage Prometheus for purposes of observability and visualization of Bigleaf devices on a Grafana dashboard.
 
 This container calls the Bigleaf status API and returns information across all sites and all circuits. It exposes prometheus metrics at http://localhost:8000/metrics
 
