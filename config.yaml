@@ -1,0 +1,4 @@
+url: "https://api-example.com"
+token_key: "example_key"
+token_auth: "example_auth"
+scrape_frequency: '5'
