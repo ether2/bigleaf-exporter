@@ -7,11 +7,10 @@ This container calls the Bigleaf status API and returns information across all s
 
 # Supported Metrics
 
-circuit_status
-
-site_status
-
-site_information_info
+bigleaf_circuit_status
+bigleaf_site_status
+bigleaf_response_time
+bigleaf_http_status
 
 # clone and build
 ```
@@ -39,8 +38,8 @@ Configure the prometheus.yml file with the bigleaf scrape job:
 ```
   - job_name: bigleaf
     metrics_path: /metrics
-    scrape_interval: 10s
-    scrape_timeout: 3s
+    scrape_interval: 5s
+    scrape_timeout: 2s
     static_configs:
     - targets: "[localhost:8000]"
 ```
