@@ -8,8 +8,11 @@ This container calls the Bigleaf status API and returns information across all s
 # Supported Metrics
 
 bigleaf_circuit_status
+
 bigleaf_site_status
+
 bigleaf_response_time
+
 bigleaf_http_status
 
 # clone and build
