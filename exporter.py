@@ -25,6 +25,12 @@ circuit_metric_help = 'Circuit status (0 for "Healthy", 1 for "Circuit Issues", 
 circuit_labels = ['site_name', 'circuit_name']
 circuit_gauge = Gauge(circuit_metric_name, circuit_metric_help, labelnames=circuit_labels, registry=registry)
 
+# Create a new gauge metric to track circuit severity
+circuit_severity_metric_name = 'bigleaf_circuit_severity'
+circuit_severity_metric_help = 'Circuit severity (0 for "Healthy", 7 for "Circuit Down" and everything else is "Issues")'
+circuit_severity_labels = ['site_name', 'circuit_name']
+circuit_severity_gauge = Gauge(circuit_severity_metric_name, circuit_severity_metric_help, labelnames=circuit_severity_labels, registry=registry)
+
 # Create a new gauge metric to track site status
 site_metric_name = 'bigleaf_site_status'
 site_metric_help = 'Site status (0 for "Site Healthy", 1 for "Degraded Availability", 2 for "Circuit Issues", 3 for "Site Offline")'
@@ -72,6 +78,24 @@ def scrape_api():
                     circuit_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(1)
                 elif circuit_status == 'Circuit Down':
                     circuit_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(2)
+                    
+                circuit_severity = circuit['circuit_severity']
+                if circuit_severity == 0:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(0)
+                if circuit_severity == 1:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(1)
+                if circuit_severity == 2:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(2)
+                if circuit_severity == 3:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(3)
+                if circuit_severity == 4:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(4)
+                if circuit_severity == 5:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(5)
+                if circuit_severity == 6:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(6)
+                if circuit_severity == 7:
+                   circuit_severity_gauge.labels(site_name=site_name, circuit_name=circuit_name).set(7)
 
             # bigleaf_site_status        
             if site_status == "Site Healthy":
